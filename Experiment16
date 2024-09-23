@@ -49,7 +49,7 @@ void printArray(int arr[], int size) {
 }
 int main() {
   int n;
-  printf("B.MAHESH REDDY\n192210692\n");
+  printf("Madhavan-192210580\n");
   printf("Enter the no of element in the array:");
   scanf("%d",&n);
   int arr[n];
