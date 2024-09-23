@@ -21,7 +21,7 @@ int prime(int n)
 int main()
 {
 	int num;
-	printf("B.MAHESH REDDY \n 192210708\n");
+	printf("Madhavan-192210580\n");
 	printf("Enter the number:");
 	scanf("%d",&num);
 	for(int i=0;i<=num;i++)
