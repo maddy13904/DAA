@@ -15,7 +15,7 @@ int binomialCoeff(int n, int k) {
 
 int main() {
     int n, k;
-    printf("B.MAHESH REDDY\n 192210708\n");
+    printf("Madhavan-192210580\n");
     printf("Enter n and k: ");
     scanf("%d %d", &n, &k);
     printf("Binomial Coefficient C(%d, %d) is %d\n", n, k, binomialCoeff(n, k));
