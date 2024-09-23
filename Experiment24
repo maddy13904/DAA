@@ -2,7 +2,7 @@
 
 int main() {
     int num, sum = 0;
-    printf("B.MAHESH REDDY \n 192210708\n");
+    printf("Madhavan-192210580\n");
     // Input number from user
     printf("Enter a positive integer: ");
     scanf("%d", &num);
