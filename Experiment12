@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-	printf("B.MAHESH REDDY\n 192210708");
+	printf("Madhavan-192210580\n");
     // Initialize variables
     int arr[100];  // Assuming a maximum size of 100 for the array
     int n, key, low, high, mid;
