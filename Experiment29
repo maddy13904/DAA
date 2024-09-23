@@ -44,7 +44,7 @@ int main() {
 	
     int n, i;
     int keys[N], freq[N];
-    printf("B. MAHESH REDDY \n 192210708\n");
+    printf("Madhavan-192210580\n");
     // Input number of keys
     printf("Enter the number of keys: ");
     scanf("%d", &n);
