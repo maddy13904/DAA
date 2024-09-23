@@ -43,7 +43,7 @@ int assignJobs(int costMatrix[N][N], int size) {
 }
 
 int main() {
-	printf("B. MAHESH REDDY \n 192210708\n");
+	printf("Madhavan-192210580\n");
     int size;
     printf("Enter the size of the cost matrix (maximum %d): ", N);
     scanf("%d", &size);
