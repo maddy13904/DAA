@@ -48,7 +48,7 @@ void printContainers() {
 }
 
 int main() {
-	printf("B. MAHESH REDDY \n 192210708\n");
+	printf("Madhavan-192210580\n");
     printf("Enter number of items: ");
     scanf("%d", &numItems);
 
