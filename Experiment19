@@ -3,7 +3,7 @@ int main()
 {
      float weight[50],profit[50],ratio[50],Totalvalue,temp,capacity,amount;
      int n,i,j;
-     printf(" B.MAHESH REDDY \n192210708\n");
+     printf("Madhavan-192210580\n");
      printf("Enter the number of items :");
      scanf("%d",&n);   
     for (i = 0; i < n; i++)
