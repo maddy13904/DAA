@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-	printf("B. MAHESH REDDY \n 192210708\n");
+	printf("Madhavan-192210580\n");
     int n;
     printf("Enter a number: ");
     scanf("%d", &n);
