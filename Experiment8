@@ -21,7 +21,7 @@ void printArray(int arr[], int size) {
 }
 
 int main() {
-    printf("B.MAHESH REDDY \n 192210708");
+    printf("Madhavan-192210580\n");
     int n;
     printf("\nEnter the number of elements: ");
     scanf("%d", &n);
