@@ -1,0 +1,30 @@
+def knapsack_approximation(products, values, sizes, capacity):
+    n = len(products)
+    # Calculate value to size ratio for each product
+    ratios = [(values[i] / sizes[i], products[i], values[i], sizes[i]) for i in range(n)]
+    
+    # Sort products by value-to-size ratio in descending order
+    ratios.sort(reverse=True, key=lambda x: x[0])
+    
+    total_value = 0
+    total_size = 0
+    selected_products = []
+    
+    for ratio, product, value, size in ratios:
+        if total_size + size <= capacity:
+            selected_products.append(product)
+            total_value += value
+            total_size += size
+    
+    return selected_products, total_value, total_size
+
+# Example usage
+products = ['p1', 'p2', 'p3', 'p4']
+values = [100, 300, 200, 150]
+sizes = [10, 20, 15, 25]
+capacity = 50
+
+selected, value, size = knapsack_approximation(products, values, sizes, capacity)
+print("Selected Products:", selected)
+print("Total Value:", value)
+print("Total Size:", size)
