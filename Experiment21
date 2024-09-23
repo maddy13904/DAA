@@ -31,7 +31,7 @@ int optimalBST(int keys[], int freq[], int n) {
 
 
 int main() {
-	printf("B.MAHESH REDDY \n 192210708\n");
+	printf("Madhavan-192210580\n");
     int keys[] = {10, 12, 20, 35};
     int freq[] = {34, 8, 50, 12};
     int n = sizeof(keys) / sizeof(keys[0]);
