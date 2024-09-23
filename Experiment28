@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main() {
     int rows, coef = 1;
-    printf("B. MAHESH REDDY \n192210708\n");
+    printf("Madhavan-192210580\n");
     printf("Enter number of rows: ");
     scanf("%d",&rows);
     for(int i=0; i<rows; i++) {
