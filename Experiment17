@@ -40,7 +40,7 @@ void maxmin(int i, int j)
 int main ()
 {
  int i, num;
- printf("B.MAHESH REDDY\n 192210708\n");
+ printf("Madhavan-192210580\n");
  printf ("\nEnter the total number of numbers : ");
  scanf ("%d",&num);
  printf ("Enter the numbers : \n");
