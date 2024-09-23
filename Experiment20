@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_EDGES 100
+#define MAX_VERTICES 100
+
+int parent[MAX_VERTICES];
+int rank[MAX_VERTICES];
+int edgeList[MAX_EDGES][3]; // Edge list storing (u, v, weight)
+int mstEdges[MAX_EDGES][3]; // MST edges
+
+void initialize(int vertices) {
+	int i;
+    for (i = 0; i < vertices; i++) {
+        parent[i] = i;
+        rank[i] = 0;
+    }
+}
+
+int findParent(int vertex) {
+    if (parent[vertex] == vertex)
+        return vertex;
+    return parent[vertex] = findParent(parent[vertex]);
+}
+
+void unionVertices(int u, int v) {
+    int uRoot = findParent(u);
+    int vRoot = findParent(v);
+
+    if (rank[uRoot] < rank[vRoot])
+        parent[uRoot] = vRoot;
+    else if (rank[uRoot] > rank[vRoot])
+        parent[vRoot] = uRoot;
+    else {
+        parent[vRoot] = uRoot;
+        rank[uRoot]++;
+    }
+}
+
+int compareEdges(const void* a, const void* b) {
+    int* edgeA = (int*)a;
+    int* edgeB = (int*)b;
+    return edgeA[2] - edgeB[2];
+}
+
+void kruskal(int vertices, int edges) {
+    initialize(vertices);
+    qsort(edgeList, edges, sizeof(edgeList[0]), compareEdges);
+
+    int mstEdgeCount = 0;
+    int totalWeight = 0;  // Variable to store the total weight of the MST
+    int i;
+    for (i = 0; i < edges; i++) {
+        int u = edgeList[i][0];
+        int v = edgeList[i][1];
+        int weight = edgeList[i][2];
+
+        if (findParent(u) != findParent(v)) {
+            mstEdges[mstEdgeCount][0] = u;
+            mstEdges[mstEdgeCount][1] = v;
+            mstEdges[mstEdgeCount][2] = weight;
+            mstEdgeCount++;
+
+            unionVertices(u, v);
+            totalWeight += weight;  // Add the weight of the edge to the total weight
+        }
+    }
+    
+    printf("Minimum Spanning Tree Edges:\n");
+    for (i = 0; i < mstEdgeCount; i++) {
+        printf("%d -- %d : %d\n", mstEdges[i][0], mstEdges[i][1], mstEdges[i][2]);
+    }
+    printf("Total weight of MST: %d\n", totalWeight);  // Print the total weight of the MST
+}
+
+int main() {
+    int vertices, edges;
+    printf("B.MAHESH REDDY\n192210708\n");
+    printf("Enter the number of vertices: ");
+    scanf("%d", &vertices);
+
+    printf("Enter the number of edges: ");
+    scanf("%d", &edges);
+    int i;
+    printf("Enter the edges (u v weight):\n");
+    for ( i = 0; i < edges; i++) {
+        scanf("%d %d %d", &edgeList[i][0], &edgeList[i][1], &edgeList[i][2]);
+    }
+
+    kruskal(vertices, edges);
+
+    return 0;
+}

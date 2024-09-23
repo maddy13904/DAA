@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    int num, sum = 0;
+    printf("B.MAHESH REDDY \n 192210708\n");
+    // Input number from user
+    printf("Enter a positive integer: ");
+    scanf("%d", &num);
+
+    // Find all divisors and add them up
+    for (int i = 1; i <= num / 2; i++) {
+        if (num % i == 0) {
+            sum += i;
+        }
+    }
+
+    // Check if the sum of divisors equals the number itself
+    if (sum == num) {
+        printf("%d is a perfect number.\n", num);
+    } else {
+        printf("%d is not a perfect number.\n", num);
+    }
+
+    return 0;
+}

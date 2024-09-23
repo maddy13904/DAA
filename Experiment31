@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <limits.h> 
+int main() {
+	printf("B. MAHESH REDDY \n 192210708\n");
+    int n;
+    printf("Enter the number of elements in the list: ");
+    scanf("%d", &n);
+
+    int list[n];
+    printf("Enter %d integers:\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("Element %d: ", i + 1);
+        scanf("%d", &list[i]);
+    }
+    int min = INT_MAX;
+    int max = INT_MIN;
+    for (int i = 0; i < n; i++) {
+        if (list[i] < min) {
+            min = list[i];
+        }
+        if (list[i] > max) {
+            max = list[i];
+        }
+    }
+    printf("Minimum value in the list: %d\n", min);
+    printf("Maximum value in the list: %d\n", max);
+
+    return 0;
+}

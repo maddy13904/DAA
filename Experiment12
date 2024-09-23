@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int main() {
+	printf("B.MAHESH REDDY\n 192210708");
+    // Initialize variables
+    int arr[100];  // Assuming a maximum size of 100 for the array
+    int n, key, low, high, mid;
+
+    // Input array elements
+    printf("\nEnter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter elements separated by space: ");
+    int i;
+    for ( i = 0; i < n; ++i) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Input target key
+    printf("Enter the target key: ");
+    scanf("%d", &key);
+
+    // Initialize low and high indices
+    low = 0;
+    high = n - 1;
+
+    // Binary search loop
+    while (low <= high) {
+        mid = (low + high) / 2;
+
+        if (arr[mid] == key) {
+            printf("Found %d at index %d.\n", key, mid);
+            break;
+        } else if (arr[mid] < key) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    // If key not found
+    if (low > high) {
+        printf("%d not found.\n", key);
+    }
+
+    return 0;
+}

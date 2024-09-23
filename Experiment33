@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100 
+
+int main() {
+	printf("B. MAHESH REDDY \n 192210708\n");
+    int list[MAX_SIZE];
+    int n, position, value;
+
+    printf("Enter number of elements in list: ");
+    scanf("%d", &n);
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("Element %d: ", i + 1);
+        scanf("%d", &list[i]);
+    }
+    printf("\nEnter the position (1 to %d) where you want to insert: ", n + 1);
+    scanf("%d", &position);
+
+    if (position < 1 || position > n + 1) {
+        printf("Invalid position! Position must be between 1 and %d.\n", n + 1);
+        return 1;
+    }
+
+    printf("Enter the value to insert: ");
+    scanf("%d", &value);
+    for (int i = n; i >= position; i--) {
+        list[i] = list[i - 1];
+    }
+    list[position - 1] = value;
+    n++; 
+    printf("\nList after insertion:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", list[i]);
+    }
+    printf("\n");
+
+    return 0;
+}

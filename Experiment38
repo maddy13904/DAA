@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <limits.h>
+
+#define N 10  // Maximum size of the cost matrix
+
+void printMatrix(int costMatrix[N][N], int size) {
+    printf("Cost Matrix:\n");
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            printf("%d\t", costMatrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int findMin(int costMatrix[N][N], int rowIndex, bool assignedTask[], int size) {
+    int min = INT_MAX;
+    for (int j = 0; j < size; ++j) {
+        if (!assignedTask[j] && costMatrix[rowIndex][j] < min) {
+            min = costMatrix[rowIndex][j];
+        }
+    }
+    return min;
+}
+
+int assignJobs(int costMatrix[N][N], int size) {
+    int totalCost = 0;
+    bool assignedTask[N] = {false};
+
+    for (int i = 0; i < size; ++i) {
+        int minCost = findMin(costMatrix, i, assignedTask, size);
+        totalCost += minCost;
+        for (int j = 0; j < size; ++j) {
+            if (!assignedTask[j] && costMatrix[i][j] == minCost) {
+                assignedTask[j] = true;
+                break;
+            }
+        }
+    }
+
+    return totalCost;
+}
+
+int main() {
+	printf("B. MAHESH REDDY \n 192210708\n");
+    int size;
+    printf("Enter the size of the cost matrix (maximum %d): ", N);
+    scanf("%d", &size);
+
+    int costMatrix[N][N];
+
+    printf("Enter the cost matrix (%dx%d):\n", size, size);
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            scanf("%d", &costMatrix[i][j]);
+        }
+    }
+
+    printMatrix(costMatrix, size);
+
+    int minCost = assignJobs(costMatrix, size);
+    printf("\nMinimum cost of assignment is: %d\n", minCost);
+
+    return 0;
+}

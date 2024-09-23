@@ -1,0 +1,75 @@
+#include <stdio.h>
+
+#define MAX_ITEMS 100
+#define MAX_CONTAINERS 100
+
+struct Item {
+    int id;
+    int width;
+    int height;
+    int weight;
+};
+
+struct Container {
+    int id;
+    int maxWeight;
+    int currentWeight;
+    struct Item items[MAX_ITEMS];
+    int itemCount;
+};
+
+struct Container containers[MAX_CONTAINERS];
+int numContainers = 0;
+int numItems = 0;
+
+void packItems(struct Item items[], int numItems) {
+    for (int i = 0; i < numItems; i++) {
+        for (int j = 0; j < numContainers; j++) {
+            if (containers[j].currentWeight + items[i].weight <= containers[j].maxWeight) {
+                containers[j].items[containers[j].itemCount++] = items[i];
+                containers[j].currentWeight += items[i].weight;
+                break; // Item packed, break to next item
+            }
+        }
+    }
+}
+
+void printContainers() {
+    printf("Container Packing:\n");
+    for (int i = 0; i < numContainers; i++) {
+        printf("Container %d (Weight: %d/%d):\n", containers[i].id, containers[i].currentWeight, containers[i].maxWeight);
+        for (int j = 0; j < containers[i].itemCount; j++) {
+            printf("Item %d (Width: %d, Height: %d, Weight: %d)\n",
+                    containers[i].items[j].id, containers[i].items[j].width,
+                    containers[i].items[j].height, containers[i].items[j].weight);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+	printf("B. MAHESH REDDY \n 192210708\n");
+    printf("Enter number of items: ");
+    scanf("%d", &numItems);
+
+    printf("Enter number of containers: ");
+    scanf("%d", &numContainers);
+
+    struct Item items[MAX_ITEMS];
+    printf("Enter details for each item (id, width, height, weight):\n");
+    for (int i = 0; i < numItems; i++) {
+        scanf("%d %d %d %d", &items[i].id, &items[i].width, &items[i].height, &items[i].weight);
+    }
+
+    printf("\nEnter details for each container (id, maxWeight):\n");
+    for (int i = 0; i < numContainers; i++) {
+        scanf("%d %d", &containers[i].id, &containers[i].maxWeight);
+        containers[i].currentWeight = 0;
+        containers[i].itemCount = 0;
+    }
+
+    packItems(items, numItems);
+    printContainers();
+
+    return 0;
+}

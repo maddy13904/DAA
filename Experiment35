@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define MAX_VERTICES 100 
+int graph[MAX_VERTICES][MAX_VERTICES];
+int numVertices;
+int colors[MAX_VERTICES]; 
+bool isSafe(int v, int color, int numColors) {
+    for (int i = 0; i < numVertices; i++) {
+        if (graph[v][i] && colors[i] == color) {
+            return false;
+        }
+    }
+    return true;
+}
+bool graphColoringUtil(int v, int numColors) {
+    if (v == numVertices) {
+        return true;
+    }
+
+    for (int c = 1; c <= numColors; c++) {
+        if (isSafe(v, c, numColors)) {
+            colors[v] = c; 
+            if (graphColoringUtil(v + 1, numColors)) {
+                return true;
+            }
+            colors[v] = 0;
+        }
+    }
+
+    return false;
+}
+void graphColoring(int numColors) {
+    for (int i = 0; i < numVertices; i++) {
+        colors[i] = 0; 
+    }
+
+    if (!graphColoringUtil(0, numColors)) {
+        printf("No solution exists with %d colors.\n", numColors);
+        return;
+    }
+
+    printf("Vertices colors using %d colors:\n", numColors);
+    for (int i = 0; i < numVertices; i++) {
+        printf("Vertex %d: Color %d\n", i + 1, colors[i]);
+    }
+}
+
+int main() {
+    int numEdges, u, v;
+    printf("B. MAHESH REDDY \n 192210708\n");
+    printf("Enter number of vertices: ");
+    scanf("%d", &numVertices);
+    printf("Enter number of edges: ");
+    scanf("%d", &numEdges);
+    for (int i = 0; i < numVertices; i++) {
+        for (int j = 0; j < numVertices; j++) {
+            graph[i][j] = 0;
+        }
+    }
+    printf("Enter edges (vertex pairs u v):\n");
+    for (int i = 0; i < numEdges; i++) {
+        scanf("%d %d", &u, &v);
+        graph[u - 1][v - 1] = 1;
+        graph[v - 1][u - 1] = 1; 
+    }
+
+    int numColors;
+    printf("Enter the number of colors to use: ");
+    scanf("%d", &numColors);
+
+    graphColoring(numColors);
+
+    return 0;
+}

@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <limits.h>
+
+#define N 100 // Assuming N is the maximum number of keys
+
+// Function to calculate the sum of frequencies from i to j
+int sum(int freq[], int i, int j) {
+    int k, s = 0;
+    for (k = i; k <= j; k++)
+        s += freq[k];
+    return s;
+}
+
+// Function to find the optimal cost of a Binary Search Tree
+int optimalBST(int keys[], int freq[], int n) {
+    int cost[N][N];
+    int i, L, r, j, c;
+
+    // Initialize the cost matrix
+    for (i = 0; i < n; i++)
+        cost[i][i] = freq[i];
+
+    // L is the chain length
+    for (L = 2; L <= n; L++) {
+        for (i = 0; i <= n - L; i++) {
+            j = i + L - 1;
+            cost[i][j] = INT_MAX;
+
+            for (r = i; r <= j; r++) {
+                c = ((r > i) ? cost[i][r - 1] : 0) +
+                    ((r < j) ? cost[r + 1][j] : 0) +
+                    sum(freq, i, j);
+
+                if (c < cost[i][j])
+                    cost[i][j] = c;
+            }
+        }
+    }
+
+    return cost[0][n - 1];
+}
+
+int main() {
+	
+    int n, i;
+    int keys[N], freq[N];
+    printf("B. MAHESH REDDY \n 192210708\n");
+    // Input number of keys
+    printf("Enter the number of keys: ");
+    scanf("%d", &n);
+
+    // Input keys
+    printf("Enter the keys:\n");
+    for (i = 0; i < n; i++) {
+        printf("Key %d: ", i + 1);
+        scanf("%d", &keys[i]);
+    }
+
+    // Input frequencies
+    printf("Enter the frequencies of the keys:\n");
+    for (i = 0; i < n; i++) {
+        printf("Frequency of key %d: ", keys[i]);
+        scanf("%d", &freq[i]);
+    }
+
+    // Calculate optimal BST cost
+    int optimal_cost = optimalBST(keys, freq, n);
+    printf("Cost of the Optimal BST is %d\n", optimal_cost);
+
+    return 0;
+}
