@@ -2,7 +2,7 @@
 
 int main() {
     int num, reversedNumber = 0, remainder;
-    printf("B.MAHESH REDDY \n 192210708\n");
+    printf("Madhavan-192210580\n");
     printf("Enter an integer: ");
     scanf("%d", &num);
 
