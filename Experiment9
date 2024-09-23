@@ -25,7 +25,7 @@ void displayMatrix(int matrix[][MAX_SIZE], int rows, int cols) {
 }
 
 int main() {
-	printf("B.MAHESH REDDY \n 192210708");
+	printf("Madhavan-192210580\n");
 	int i,j;
     int mat1[MAX_SIZE][MAX_SIZE], mat2[MAX_SIZE][MAX_SIZE], result[MAX_SIZE][MAX_SIZE];
     int rows1, cols1, rows2, cols2;
