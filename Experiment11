@@ -4,7 +4,7 @@
 #define MAX_LENGTH 100
 
 int main() {
-	printf("B.MAHESH REDDY\n 192210708");
+	printf("Madhavan-192210580\n");
     char str1[MAX_LENGTH], str2[MAX_LENGTH];
     int i;
 
