@@ -15,7 +15,7 @@ int isPalindrome(char str[]) {
 }
 
 int main() {
-	printf("B.MAHESH REDDY \n 192210708");
+	printf("Madhavan-192210580\n");
     char str[MAX_LENGTH];
 
     printf("\nEnter a string: ");
